@@ -205,7 +205,7 @@ import './Index.scss'
 export default {
     data() {
         return {
-            imageSrc: 'src/assets/1.jpeg',
+            imageSrc: 'src/assets/1.jpg',
             activeNames: '',
 
             blur: 0,
