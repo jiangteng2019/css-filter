@@ -1,7 +1,14 @@
-# Vue 3 + Vite
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## CSS filter 滤镜 可视化参数配置
+##### 使用 Vue 3 + Vite + Element plus 开发
 
-## Recommended IDE Setup
+1、支持手动调整filter滤镜参数；
+2、支持手动上传图片预览；
+3、预设多种滤镜效果。
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+预览地址：
+### [CSS filter](https://jiangteng2019.github.io/css-filter-dist/)
+
+![avatar](https://images.cnblogs.com/cnblogs_com/engeng/2086212/o_220114051034_page.jpg)
+
+
