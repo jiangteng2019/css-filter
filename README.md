@@ -1,9 +1,14 @@
 
-## CSS 可视化滤镜参数配置
+## CSS filter 滤镜 可视化参数配置
 ##### 使用 Vue 3 + Vite + Element plus 开发
 
- [预览](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup)
+1、支持手动调整filter滤镜参数；
+2、支持手动上传图片预览；
+3、预设多种滤镜效果。
 
-###### Recommended IDE Setup
+预览地址：
+### [CSS filter](https://jiangteng2019.github.io/css-filter-dist/)
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+![avatar](https://images.cnblogs.com/cnblogs_com/engeng/2086212/o_220114051034_page.jpg)
+
+
