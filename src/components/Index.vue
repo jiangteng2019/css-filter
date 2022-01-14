@@ -13,7 +13,8 @@
         <el-container style="overflow: auto;">
             <el-main>
                 <el-collapse v-model="activeNames">
-                    <el-collapse-item title="模糊 blur">
+                    <el-collapse-item>
+                        <template #title>模糊 blur</template>
                         <div class="slider_warpper">
                             <el-slider
                                 v-model="blur"
@@ -165,19 +166,29 @@
             </el-main>
             <el-main>
                 <el-input :model-value="styleSheet" autosize type="textarea" label="1" />
-                <!-- <el-card class="effect_container">
+                <el-card class="effect_container">
                     <template #header>
                         <div class="card-header">
                             <span>效果预设</span>
                         </div>
                     </template>
                     <div class="effect_item_container">
-                        <div class="effect_item" :class="{'active': index === effectIndex}" v-for="(item, index) in effect"  @click="handleEffectItemClick(index, item.filterObj)">
-                            <img src="../assets/ex.png" alt="" width="72" height="72" :style="{filter: item.filter}">
+                        <div
+                            class="effect_item"
+                            :class="{ 'active': index === effectIndex }"
+                            v-for="(item, index) in effect"
+                            @click="handleEffectItemClick(index, item.filter)"
+                        >
+                            <img
+                                src="../assets/ex.png"
+                                width="72"
+                                height="72"
+                                :style="{ filter: setCssFilter(item.filter) }"
+                            />
                             <div class="effect_des">{{ item.title }}</div>
                         </div>
                     </div>
-                </el-card>-->
+                </el-card>
             </el-main>
             <el-main>
                 <div class="image_container">
@@ -244,14 +255,117 @@ export default {
             effect: [
                 {
                     title: '原图',
-                    filter: '',
-                    filterObj: null
+                    filter: null,
+                },
+                {
+                    title: '1977',
+                    filter: {
+                        brightness: 1.1,
+                        saturate: 1.3,
+                        contrast: 1.1
+                    }
+                },
+                {
+                    title: 'Aden',
+                    filter: {
+                        brightness: 1.2,
+                        saturate: 0.85,
+                        contrast: 0.9,
+                        'hueRotate': '20deg'
+                    }
+                },
+                {
+                    title: 'Amaro',
+                    filter: {
+                        brightness: 1.1,
+                        saturate: 1.5,
+                        contrast: 0.9,
+                        hueRotate: '-10deg'
+                    }
+                },
+                {
+                    title: 'Brannan',
+                    filter: {
+                        contrast: 1.4,
+                        sepia: 0.5
+                    }
+                },
+                {
+                    title: 'Brooklyn',
+                    filter: {
+                        contrast: 0.9,
+                        brightness: 1.1
+                    }
+                },
+                {
+                    title: 'Clarendon',
+                    filter: {
+                        contrast: 1.2,
+                        saturate: 1.25
+                    }
+                },
+                {
+                    title: 'Earlybird',
+                    filter: {
+                        contrast: 0.9,
+                        sepia: 0.2
+                    }
+                },
+                {
+                    title: 'Gingham',
+                    filter: {
+                        brightness: 1.05,
+                        hueRotate: '350deg'
+                    }
+                },
+                {
+                    title: 'Hudson',
+                    filter: {
+                        contrast: 0.9,
+                        brightness: 1.2,
+                        saturate: 1.1,
+                    }
                 },
                 {
                     title: '黑白',
-                    filter: 'grayscale(1)',
-                    filterObj: {
+                    filter: {
+                        contrast: 1.1,
+                        brightness: 1.1,
+                        sepia: 0.3,
                         grayscale: 1
+                    }
+                },
+                {
+                    title: 'Lofi',
+                    filter: {
+                        contrast: 1.5,
+                        saturate: 1.1
+                    }
+                },
+                {
+                    title: 'Maven',
+                    filter: {
+                        contrast: 0.95,
+                        brightness: 0.95,
+                        saturate: 1.5,
+                        sepia: 0.25
+                    }
+                },
+                {
+                    title: 'Reyes',
+                    filter: {
+                        contrast: 0.85,
+                        brightness: 1.1,
+                        saturate: 0.75,
+                        sepia: 0.22
+                    }
+                },
+                {
+                    title: 'Stinson',
+                    filter: {
+                        contrast: 0.75,
+                        brightness: 1.15,
+                        saturate: 0.85,
                     }
                 }
             ]
@@ -373,7 +487,13 @@ export default {
             this.resetParams();
             if (item) {
                 for (let key in item) {
-                    this[key] = item[key];
+                    this[key] = parseFloat(item[key]);  // slider 状态
+                    // 预览图片状态
+                    if (key === 'hueRotate') {
+                        this.style['hue-rotate'] = `hue-rotate(${item[key]})`;
+                    } else {
+                        this.style[key] = `${key}(${item[key]})`;
+                    }
                 }
             }
         },
@@ -392,6 +512,16 @@ export default {
             this.opacity = 1;
             this.saturate = 1;
             this.sepia = 0;
+            this.style = {};
+        },
+
+        // 缩略图效果滤镜
+        setCssFilter(o = {}) {
+            let a = '';
+            for (let key in o) {
+                a = a + `${key === 'hueRotate' ? 'hue-rotate' : key}(${o[key]})` + ' ';
+            }
+            return a;
         }
 
     },

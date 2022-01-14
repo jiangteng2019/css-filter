@@ -16,19 +16,23 @@
 }
 .el-main:nth-child(2) {
     border-left: 1px solid #dcdfe6;
+    overflow: hidden;
     .el-textarea {
-        height: 90%;
+        height: 30%;
     }
     .el-textarea__inner {
         height: 100% !important;
     }
     .effect_container {
         text-align: left;
+        height: 70%;
+        overflow: auto;
         margin-top: 10px;
-        
         .effect_item_container {
             text-align: center;
             display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
             .effect_item {
                 cursor: pointer;
                 border: 1px solid #dcdfe6;
@@ -36,6 +40,7 @@
                 transition: all 0.3s;
                 flex-basis: 100px;
                 margin-right: 10px;
+                margin-bottom: 10px;
                 box-sizing: border-box;
                 img {
                    
@@ -46,7 +51,7 @@
                 }
             }
             .effect_item:hover {
-                transform: translateY(-5px);
+                transform: translateY(-3px);
             }
             .active {
                 border: 1px solid #409eff;
