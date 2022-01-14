@@ -7,6 +7,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+	base: '/css-filter-dist/',
 	plugins: [
 		vue(),
 		AutoImport({
